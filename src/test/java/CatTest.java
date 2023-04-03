@@ -14,11 +14,9 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 
 public class CatTest {
-    @Spy
-    private Feline feline;
 
     @Mock
-    private Animal animal;
+    Feline feline;
 
     @Test
     public void getSound() {
@@ -30,9 +28,7 @@ public class CatTest {
     @Test
     public void getFoodTest() throws Exception {
         Cat cat = new Cat(feline);
-        List<String> actual = cat.getFood();
-        Mockito.verify(feline, Mockito.times(1)).eatMeat();
-        Mockito.when(animal.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        assertEquals(animal.getFood("Хищник"), actual);
+        cat.getFood();
+        Mockito.verify(feline).eatMeat();
     }
 }

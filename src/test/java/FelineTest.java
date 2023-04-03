@@ -1,5 +1,6 @@
 import com.example.Animal;
 import com.example.Feline;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,8 +17,6 @@ public class FelineTest {
 
     @Spy
     private Feline feline;
-    @Mock
-    private Animal animal;
 
     @Test
     public void getKittensWithoutParametersTest() {
@@ -39,9 +38,7 @@ public class FelineTest {
 
     @Test
     public void eatMeatTest() throws Exception {
-        List<String> actual = feline.eatMeat();
-        Mockito.when(animal.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        assertEquals(animal.getFood("Хищник"), actual);
+        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"),feline.eatMeat());
     }
 }
 
