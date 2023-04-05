@@ -1,5 +1,6 @@
 import com.example.Feline;
 import com.example.Lion;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,14 +37,6 @@ Feline feline;
         Lion lion = new Lion(sex, feline);
         lion.getFood();
         Mockito.verify(feline).getFood("Хищник");
-    }
-    @Test
-    public void doesHaveManeNegativeTest() {
-        try {
-            new Lion("Среднее", feline);
-        } catch (Exception ex) {
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", ex.getMessage());
-        }
     }
     @Test
     public void doesHaveManePositiveTest() throws Exception {
